@@ -1,10 +1,10 @@
 {
   "name": "wlmesseger-api",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "description": "API Rest for WL Messeger",
+  "author": "Miguel Mendoza <miguelemrdev@gmail.com>",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "doc": "npx compodoc -p tsconfig.json -s --port 3030"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -67,5 +68,13 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zandomed/WL-messeger-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zandomed/WL-messeger-api/issues"
+  },
+  "homepage": "https://github.com/Zandomed/WL-messeger-api#readme"
 }
