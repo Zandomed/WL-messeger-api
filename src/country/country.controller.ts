@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
 import { CountryService } from './services/country.service';
 
 @Controller('countries')
@@ -12,6 +12,8 @@ export class CountryController {
 
   @Get('/:id')
   public async getCountry(@Param('id') _id: string) {
-    return await this._countryService.getByID(_id);
+    const country = await this._countryService.getByID(_id);
+    if (!country) throw new NotFoundException(`Not found country by ID: ${_id}`);
+   return country;
   }
 }

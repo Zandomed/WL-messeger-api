@@ -13,7 +13,7 @@ export class CountryService {
     return await this._countryModel.find();
   }
 
-  public async getByID(_id: string) {
-    return await this._countryModel.findById(_id);
+  public async getByID(_id: string):Promise<Country> {
+    return await this._countryModel.findById(_id).catch(err => null);
   }
 }
