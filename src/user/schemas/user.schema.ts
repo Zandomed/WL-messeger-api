@@ -7,8 +7,10 @@ export const UserSchema = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String, required: true },
-    // dateBirthday: { type: Date, required: true },
-    profileImage: { type: String, default: '' },
+    birthday: { type: Date, required: true },
+    country: { type: Schema.Types.ObjectId, required: true, ref: 'countries' },
+    images: { type: Array, default: [] },
+    gender: { type: String, required: true },
   },
   { timestamps: true },
 );

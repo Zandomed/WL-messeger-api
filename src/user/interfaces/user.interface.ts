@@ -1,4 +1,5 @@
-import { Document } from "mongoose";
+import { Document } from 'mongoose';
+import { Country } from 'src/country/interfaces/country.interface';
 
 export interface User extends Document {
   readonly _id: string;
@@ -7,8 +8,9 @@ export interface User extends Document {
   readonly username: string;
   readonly email: string;
   readonly password: string;
-  // readonly accessToken: string;
-  readonly profileImage: string;
+  readonly birthday: Date;
+  readonly images: string[];
+  readonly country: Country;
   readonly createdAt: Date;
   readonly UpdateAt: Date;
 }

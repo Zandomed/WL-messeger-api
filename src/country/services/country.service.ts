@@ -13,7 +13,7 @@ export class CountryService {
     return await this._countryModel.find().sort('name');
   }
 
-  public async getByID(_id: string): Promise<Country> {
+  public async findByID(_id: string): Promise<Country> {
     return await this._countryModel.findById(_id).catch(err => null);
   }
 }
