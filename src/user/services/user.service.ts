@@ -29,7 +29,7 @@ export class UserService {
       .catch(err => null);
   }
 
-  public async findOne(params: Partial<User>): Promise<User> {
+  public async findOne(params: Partial<User> | any): Promise<User> {
     return await this._userModel
       .findOne(params)
       .then(user => user.populate('country').execPopulate())
@@ -37,15 +37,19 @@ export class UserService {
   }
 
   public async isExistEmail(email: string): Promise<boolean> {
-    const user = await this.findOne({ email });
+    const regex = new RegExp(['^', email, '$'].join(''), 'i');
+    const user = await this.findOne({ email: regex });
     if (user) return true;
     else return false;
   }
 
-  public async isExistUsername(username:string):Promise<boolean>{
-    const user = await this.findOne({username});
-    if (user) return true
-    else return false
+  public async isExistUsername(username: string): Promise<boolean> {
+    const regex = new RegExp(['^', username, '$'].join(''), 'i');
+    const user = await this.findOne({
+      username: regex,
+    });
+    if (user) return true;
+    else return false;
   }
 
   public async create(createUserDTO: Partial<CreateUserDTO>): Promise<User> {
