@@ -10,10 +10,10 @@ export class CountryService {
   ) {}
 
   public async findAll(): Promise<Country[]> {
-    return await this._countryModel.find();
+    return await this._countryModel.find().sort('name');
   }
 
-  public async getByID(_id: string):Promise<Country> {
+  public async getByID(_id: string): Promise<Country> {
     return await this._countryModel.findById(_id).catch(err => null);
   }
 }
