@@ -17,6 +17,8 @@ export class MongooseConfigService implements MongooseOptionsFactory {
       uri: this._configService.get<string>('URL_MONGO'),
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      dbName: this._configService.get<string>('NAME_MONGO'),
+      appname: 'WLMesseger API',
     };
   }
 }
