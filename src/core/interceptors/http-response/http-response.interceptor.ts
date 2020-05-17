@@ -18,6 +18,7 @@ export class HttpResponseInterceptor implements NestInterceptor {
     return next.handle().pipe(
       map(data => ({
         metadata: getMetadataResponse(request),
+        success: true,
         data,
       })),
     );

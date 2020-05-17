@@ -14,7 +14,7 @@ export class UserService {
    * @name getUsers
    * @author Miguel Mendoza <miguelemrdev@gmail.com>
    */
-  async findAll(): Promise<User[]> {
+  public async findAll(): Promise<User[]> {
     return await this._userModel
       .find()
       .populate('country')
@@ -22,22 +22,33 @@ export class UserService {
   }
 
   // Get a single User
-  async findByID(_id: string): Promise<User> {
+  public async findByID(_id: string): Promise<User> {
     return await this._userModel
       .findById(_id)
       .then(user => user.populate('country').execPopulate())
       .catch(err => null);
   }
 
-  async findOne(params: Partial<User> | any): Promise<User> {
-    return await this._userModel.findOne(params);
+  public async findOne(params: Partial<User>): Promise<User> {
+    return await this._userModel
+      .findOne(params)
+      .then(user => user.populate('country').execPopulate())
+      .catch(err => null);
   }
 
-  async findByEmail(email: string): Promise<User> {
-    return await this._userModel.findOne({ email });
+  public async isExistEmail(email: string): Promise<boolean> {
+    const user = await this.findOne({ email });
+    if (user) return true;
+    else return false;
   }
 
-  async create(createUserDTO: Partial<CreateUserDTO>): Promise<User> {
+  public async isExistUsername(username:string):Promise<boolean>{
+    const user = await this.findOne({username});
+    if (user) return true
+    else return false
+  }
+
+  public async create(createUserDTO: Partial<CreateUserDTO>): Promise<User> {
     const password = await hash(createUserDTO.password, 10);
     const newUser = new this._userModel({
       ...createUserDTO,
