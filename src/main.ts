@@ -3,6 +3,7 @@ import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './core/filters/http-exception/http-exception.filter';
 import { HttpResponseInterceptor } from './core/interceptors/http-response/http-response.interceptor';
+import { ValidationPipe } from './core/pipes/validation/validation.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -16,7 +17,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   /* Pipes Globals */
-  // app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe());
 
   /* Interceptors Globals */
   app.useGlobalInterceptors(new HttpResponseInterceptor());
