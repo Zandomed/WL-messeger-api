@@ -35,4 +35,5 @@ lerna-debug.log*
 
 
 # File Config
-.env
+.env*
+!.env.example
