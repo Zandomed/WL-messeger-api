@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
-import { DatabaseModule } from './database/database.module';
+import { CoreModule } from './core/core.module';
 import { CountryModule } from './country/country.module';
+import { DatabaseModule } from './database/database.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -16,6 +16,7 @@ import { CountryModule } from './country/country.module';
     DatabaseModule,
     UserModule,
     CountryModule,
+    CoreModule,
   ],
   controllers: [AppController],
   providers: [AppService],
