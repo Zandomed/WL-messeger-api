@@ -12,7 +12,6 @@ export class UserController {
   @Get('/')
   public async getUsers() {
     const users = await this._userService.findAll();
-    console.log(users);
     return users;
   }
 

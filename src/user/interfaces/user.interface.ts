@@ -12,5 +12,6 @@ export interface User extends Document {
   readonly images: string[];
   readonly country: Country;
   readonly createdAt: Date;
-  readonly UpdateAt: Date;
+  readonly updateAt: Date;
+  access_token: string;
 }
